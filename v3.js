@@ -1,12 +1,25 @@
 (() => {
   const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+  /* Load the global contrast hardening layer on every V3 surface. */
+  if(!document.querySelector('link[data-cn-contrast]')){
+    const contrast=document.createElement('link');
+    contrast.rel='stylesheet';contrast.href='contrast.css';contrast.dataset.cnContrast='true';
+    document.head.appendChild(contrast);
+  }
+
+  /* Career is now a complete standalone employer-branding journey. */
+  $$('a[href="#karriere"]').forEach(a=>a.setAttribute('href','/karriere'));
+  const careerTeaser=$('.v3-career-hero a.em-btn-light');
+  if(careerTeaser){careerTeaser.setAttribute('href','/karriere');careerTeaser.innerHTML='Karriere bei CN entdecken <span>→</span>'}
+
   const pageProgress=$('#emProgress');
   const updateProgress=()=>{const max=document.documentElement.scrollHeight-innerHeight;if(pageProgress)pageProgress.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%'};
   addEventListener('scroll',updateProgress,{passive:true});updateProgress();
-  if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible')}),{threshold:.1,rootMargin:'0px 0px -6% 0px'});$$('.em-section,.em-photo,.em-service-list article,.v3-route,.v3-employer-grid article').forEach(el=>{el.classList.add('em-reveal');io.observe(el)})}
+  if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible')}),{threshold:.1,rootMargin:'0px 0px -6% 0px'});$$('.em-section,.em-photo,.em-service-list article,.v3-route,.v3-employer-grid article,.career-benefit,.career-value,.career-moment').forEach(el=>{el.classList.add('em-reveal');io.observe(el)})}
   const params=new URLSearchParams(location.search), attribution=[params.get('utm_source'),params.get('utm_campaign')].filter(Boolean).join(' / ');
   const smoothTo=id=>document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});
-  $$('.v3-route').forEach(btn=>btn.addEventListener('click',()=>{const r=btn.dataset.route;if(r==='career')return smoothTo('job-match');smoothTo('pflege-kompass');setTimeout(()=>{const v=r==='relative'?'Für einen Angehörigen':'Für mich selbst';document.querySelector(`[data-care-key="person"][data-care-value="${v}"]`)?.focus({preventScroll:true})},650)}));
+  $$('.v3-route').forEach(btn=>btn.addEventListener('click',()=>{const r=btn.dataset.route;if(r==='career'){location.href='/karriere';return}smoothTo('pflege-kompass');setTimeout(()=>{const v=r==='relative'?'Für einen Angehörigen':'Für mich selbst';document.querySelector(`[data-care-key="person"][data-care-value="${v}"]`)?.focus({preventScroll:true})},650)}));
   const buildFlow=({root,screenSelector,stepLabel,progress,back,restart,answerSelector,summary,mail,copy,kind})=>{
     const screens=$$(screenSelector,root), state={};let step=0;const total=screens.length;
     const labels=kind==='care'?{person:'Für wen',need:'Worum es geht',urgency:'Dringlichkeit',contact:'Kontaktwunsch'}:{priority:'Wichtig beim Wechsel',qualification:'Hintergrund',hours:'Arbeitszeit',timing:'Zeitpunkt'};
@@ -18,5 +31,5 @@
   };
   let careFlow;const careRoot=$('#careFlow');if(careRoot)careFlow=buildFlow({root:careRoot,screenSelector:'.v3-screen[data-care-step]',stepLabel:$('#careStepLabel'),progress:$('#careProgress'),back:$('#careBack'),restart:$('#careRestart'),answerSelector:'button[data-care-key]',summary:$('#careSummary'),mail:$('#careMail'),copy:$('#careCopy'),kind:'care'});
   const jobRoot=$('#jobFlow');if(jobRoot)buildFlow({root:jobRoot,screenSelector:'.v3-screen[data-job-step]',stepLabel:$('#jobStepLabel'),progress:$('#jobProgress'),back:$('#jobBack'),restart:$('#jobRestart'),answerSelector:'button[data-job-key]',summary:$('#jobSummary'),mail:$('#jobMail'),copy:$('#jobCopy'),kind:'job'});
-  const intent=params.get('intent');if(intent==='career')setTimeout(()=>smoothTo('job-match'),250);if(intent==='relative'||intent==='self'){careFlow?.setInitial('person',intent==='relative'?'Für einen Angehörigen':'Für mich selbst');careFlow?.go(1);setTimeout(()=>smoothTo('pflege-kompass'),250)}
+  const intent=params.get('intent');if(intent==='career')setTimeout(()=>{if(location.pathname.includes('karriere'))smoothTo('job-match');else location.href='/karriere#job-match'},250);if(intent==='relative'||intent==='self'){careFlow?.setInitial('person',intent==='relative'?'Für einen Angehörigen':'Für mich selbst');careFlow?.go(1);setTimeout(()=>smoothTo('pflege-kompass'),250)}
 })();
