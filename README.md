@@ -1,18 +1,7 @@
-# CN Pflege – emotionaler Konzept-Entwurf
+# CN – Der Pflegedienst
 
-Dependency-freier Website-Entwurf für CN – Der Pflegedienst in Frankfurt-Sachsenhausen.
+Production preview repository for the CN V3 website.
 
-## Seiten
-- `/` – emotionale öffentliche CN-Website (Hauptansicht)
-- `/demo` – Konzept-/Demo-Übersicht
-- `/admin` – Cockpit-Demo
-- `/website` – identische Website-Ansicht als separater Demo-Link
+Current live content: emotional homepage + guided care journey + employer-branding career journey + CN brand mark.
 
-## Faktenbasis
-Verwendet wurden nur öffentlich belegbare CN-Unternehmensdaten und Leistungen. Recruiting: Pflegefachkraft (m/w/d), Vollzeit, unbefristet. Die Gründerstory wird ausdrücklich nicht erfunden; der Entwurf markiert, wo echte CN-Fotografie und persönliche Aussagen ergänzt werden sollten.
-
-## Konzeptbildmaterial
-Age Cymru / Unsplash, als frei unter der Unsplash License ausgewiesene Fotos. Für die finale Website empfehlen wir echte CN-Fotografie.
-
-## Hinweis
-Kein Backend, keine echten Formulareingänge, keine realen Dashboard-Daten. Dashboardwerte sind als Demo gekennzeichnet. Alle öffentlichen Seiten sind als Entwurf auf `noindex` ausgelegt.
+Deployment trigger: 2026-09-10T12:34:00+02:00
