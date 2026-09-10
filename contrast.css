@@ -1,0 +1,23 @@
+/* CN contrast hardening — send-ready accessibility pass */
+.emotional-site a.em-btn-light,
+.emotional-site .em-career a.em-btn-light,
+.emotional-site .v3-career a.em-btn-light,
+.emotional-site .v3-career-hero a.em-btn-light,
+.emotional-site .career-hero a.em-btn-light{color:#17372f!important;background:#f9f5ec!important;border-color:rgba(23,55,47,.12)!important;text-shadow:none!important;opacity:1!important;-webkit-text-fill-color:#17372f!important}
+.emotional-site a.em-btn-light:hover,
+.emotional-site a.em-btn-light:focus-visible{color:#17372f!important;background:#fff!important;-webkit-text-fill-color:#17372f!important}
+.emotional-site a.em-btn-dark,
+.emotional-site .v3-result-actions a.em-btn-dark,
+.emotional-site .career-cta-dark{color:#fff!important;background:#17372f!important;-webkit-text-fill-color:#fff!important}
+.emotional-site a.em-btn-dark:hover,
+.emotional-site a.em-btn-dark:focus-visible{color:#fff!important;background:#244c41!important;-webkit-text-fill-color:#fff!important}
+.emotional-site .v3-route{color:#17241f!important}
+.emotional-site .v3-route:hover,.emotional-site .v3-route:focus-visible{color:#fff!important}
+.emotional-site .v3-options button{color:#17241f!important;-webkit-text-fill-color:#17241f!important}
+.emotional-site .v3-options button:hover,.emotional-site .v3-options button:focus-visible{color:#8c4c36!important;-webkit-text-fill-color:#8c4c36!important}
+.emotional-site .em-question-answer,.emotional-site .em-question-answer p{color:#fff!important}
+.emotional-site .em-final-phone{color:#17241f!important}
+.emotional-site .em-footer a{color:#fff!important}
+.emotional-site .em-text-link{color:#fff!important}
+.emotional-site button:disabled{opacity:.45}
+@media (forced-colors:active){.emotional-site .em-btn{border:2px solid ButtonText}}
